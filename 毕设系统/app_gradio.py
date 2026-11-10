@@ -20,13 +20,18 @@ def predict_and_diagnose(img, prompt_version):
     if img is None:
         return "请先上传叶片图片", ""
     res = model.predict(img, verbose=False)[0]
-    if res.boxes is None or len(res.boxes) == 0:
-        return "未检测到叶片目标，请更换图片重试", ""
-    # 取置信度最高的检测框
-    confs = res.boxes.conf.tolist()
-    idx = confs.index(max(confs))
-    cls_id = int(res.boxes.cls[idx])
-    conf = confs[idx]
+    if res.probs is not None:
+        # 分类模型：直接读取 top1 类别与置信度
+        cls_id = int(res.probs.top1)
+        conf = float(res.probs.top1conf)
+    elif res.boxes is not None and len(res.boxes) > 0:
+        # 检测模型：取置信度最高的检测框
+        confs = res.boxes.conf.tolist()
+        idx = confs.index(max(confs))
+        cls_id = int(res.boxes.cls[idx])
+        conf = confs[idx]
+    else:
+        return "未识别到叶片目标，请更换图片重试", ""
     disease = res.names[cls_id]
 
     try:

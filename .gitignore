@@ -21,6 +21,9 @@ node_modules/
 # 实验输出
 毕设系统/实验结果/
 
+# README 临时预览帧
+docs/preview_*.png
+
 # 大型或个人文档、演示文件
 *.docx
 *.pptx
