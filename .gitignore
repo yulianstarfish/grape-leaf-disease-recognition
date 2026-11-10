@@ -1,0 +1,31 @@
+# 密钥
+.env
+
+# Python 与 IDE 缓存
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+.pytest_cache/
+.venv/
+
+# 模型权重、数据集与向量库（体积大，不进 Git）
+*.pt
+grapes images/
+chroma_db/
+
+# 无关的前端实验目录及依赖
+/time/
+node_modules/
+
+# 实验输出
+毕设系统/实验结果/
+
+# 大型或个人文档、演示文件
+*.docx
+*.pptx
+*.mp4
+
+# 系统文件
+.DS_Store
+Thumbs.db

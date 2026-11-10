@@ -1,0 +1,11 @@
+# 毕设系统依赖（在 Python310 主环境中执行）
+# pip install -r requirements.txt
+openai>=1.0
+gradio>=4.0
+chromadb>=0.5
+sentence-transformers>=2.2
+FlagEmbedding        # bge 重排器（实验1重排项）
+pypdf                # 知识库支持 PDF 语料
+openpyxl             # 实验2导出 xlsx
+python-dotenv        # 从 .env 读取 API Key
+# 已具备：ultralytics / pandas / matplotlib / numpy（随主环境）
